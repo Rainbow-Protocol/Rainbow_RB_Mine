@@ -120,8 +120,8 @@ contract RainbowMine {
             return(0,4);
         }
 
-        uint256 baseOutRB = releaseRulesDSE(userTotalAssets);
-        uint256 loseOutRB = releaseRulesDSE(loseAssets);
+        uint256 baseOutRB = releaseRulesRB(userTotalAssets);
+        uint256 loseOutRB = releaseRulesRB(loseAssets);
 
         uint256 outRBStage = mineManager.mineTotalTokens.add(baseOutRB);
         if(outRBStage <= (10000000 * 1e18)){
@@ -133,14 +133,14 @@ contract RainbowMine {
         }else{
             loseOutRB = loseOutRB.mul(4);
         }
-        uint256 totalOutRB = baseOutDSE.add(loseOutDSE);
+        uint256 totalOutRB = baseOutRB.add(loseOutRB);
         if(totalOutRB == 0){
             //TotalOutDSE error
             return(0,5);
         }
         uint256 realMineTokens = 0;
         if(tokenMineBalance > totalOutRB){
-            realMineTokens = totalOutDSE;
+            realMineTokens = totalOutRB;
         }else{
             realMineTokens = tokenMineBalance;
         }
@@ -148,7 +148,7 @@ contract RainbowMine {
     }
 
 
-    function releaseRulesDSE(uint256 assertsAmount)private view returns(uint256){
+    function releaseRulesRB(uint256 assertsAmount)private view returns(uint256){
 
         ERC20 rbToken = ERC20(rbTokenAddress);
 
