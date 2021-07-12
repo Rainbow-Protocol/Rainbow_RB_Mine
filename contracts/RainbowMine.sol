@@ -79,7 +79,7 @@ contract RainbowMine {
         }
     }
 
-    function startMine(uint256 userTotalAssets,uint256 loseAssets,address receiveAddress) public{
+    function startMine(uint256 userTotalAssets,uint256 loseAssets,address receiveAddress) public returns(uint256){
         require(getMinerPermission(msg.sender),"No permission .");
         require(receiveAddress != address(0),"rec address error .");
         require(rbTokenAddress != address(0),"RainbowTokenAddress no init .");
@@ -97,6 +97,8 @@ contract RainbowMine {
         platformDataManager.totalInsuredAssets = platformDataManager.totalInsuredAssets.add(userTotalAssets);
         platformDataManager.totalLossesAssets = platformDataManager.totalLossesAssets.add(loseAssets);
         emit MineTokensEvent(msg.sender,receiveAddress,userTokens);
+
+        return userTokens;
     }
 
     function getUserClaimAmount(uint256 userTotalAssets,uint256 loseAssets,address user) public view returns(uint256 state,uint256 userTokens){
