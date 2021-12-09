@@ -1,4 +1,4 @@
-pragma solidity 0.6.0;
+pragma solidity 0.8.7;
 import "./ERC20Interface.sol";
 import "./SafeMath.sol";
 
@@ -9,19 +9,22 @@ contract RainbowMine {
     address payable owner;
 
     struct PlatformData {
+        //Business data
         uint256 totalInsuredAssets;
+        //Compensation for losses
         uint256 totalLossesAssets;
     }
     //Environmental statistics
     PlatformData public platformDataManager;
 
     address public rbTokenAddress;
+    //Max value
     uint256 constant public RB_TOKEN_MINE_TOTAL = 300000000 * 1e18;
 
     struct MineManagerStruct {
         uint256 totalMinersCount;
         uint256 mineTotalTokens;
-        //10:Have authority to mine
+        //Have authority to mine, state:10
         mapping(address => uint256) minersPermissions;
     }
     MineManagerStruct public mineManager;
@@ -40,7 +43,7 @@ contract RainbowMine {
     }
 
 
-    //Protocol upgrade, transfer tokens
+    //Protocol upgrade, Dao governance.
     function rbTokenMigration(uint256 _tokenAmount,address _receive)public onlyOwner{
         require(_tokenAmount > 0,"rbTokenMigration##value error .");
         require(_receive != address(0),"rbTokenMigration##Receive address error .");
@@ -80,18 +83,18 @@ contract RainbowMine {
     }
 
     function startMine(uint256 userTotalAssets,uint256 loseAssets,address receiveAddress) public returns(uint256){
-        require(getMinerPermission(msg.sender),"No permission .");
-        require(receiveAddress != address(0),"rec address error .");
-        require(rbTokenAddress != address(0),"RainbowTokenAddress no init .");
+        require(getMinerPermission(msg.sender),"startMine,no permission");
+        require(receiveAddress != address(0),"startMine,rec address error");
+        require(rbTokenAddress != address(0),"startMine,RainbowTokenAddress no init");
         ERC20 rbToken = ERC20(rbTokenAddress);
         uint256 tokenMineBalance = rbToken.balanceOf(address(this));
-        require(tokenMineBalance > 0,"No RB");
-        require(userTotalAssets > 0,"No userTotalAssets");
-        require(loseAssets > 0,"No loseAssets");
+        require(tokenMineBalance > 0,"startMine,No RB");
+        require(userTotalAssets > 0,"startMine,No userTotalAssets");
+        require(loseAssets > 0,"startMine,No loseAssets");
 
         (uint256 state,uint256 userTokens) = getUserClaimAmount(userTotalAssets,loseAssets,receiveAddress);
-        require(state > 0,"startMine-userTokens-error .");
-        require(rbToken.transfer(receiveAddress,userTokens),"user receive tokens error !");
+        require(state > 0,"startMine,startMine-userTokens-error");
+        require(rbToken.transfer(receiveAddress,userTokens),"startMine,user receive tokens error");
         mineManager.mineTotalTokens = mineManager.mineTotalTokens.add(userTokens);
 
         platformDataManager.totalInsuredAssets = platformDataManager.totalInsuredAssets.add(userTotalAssets);
