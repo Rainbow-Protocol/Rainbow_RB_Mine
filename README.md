@@ -1,6 +1,7 @@
 # Rainbow_Token_Mine
 Rainbow protocol Mining management.
 
+[This ABI file](/abi/rb_mine.json)<br>
 Rinkeby:
 
-contract:   0xf063Ed606BB9F04bdf928cEeE57Ff8579408751f
+contract:   0x90De3aB59e99b3c61e85656CD784AEb876135825

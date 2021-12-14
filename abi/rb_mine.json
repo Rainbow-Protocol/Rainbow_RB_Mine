@@ -1,0 +1,282 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "miner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "mineTokens",
+				"type": "uint256"
+			}
+		],
+		"name": "MineTokensEvent",
+		"type": "event"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"inputs": [],
+		"name": "RB_TOKEN_MINE_TOTAL",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getPlatformData",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "totalAssets",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "loseAssets",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTotalTokensOfMine",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "userTotalAssets",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "loseAssets",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "getUserClaimAmount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "r_state",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "r_userTokens",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "mineManager",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "totalMinersCount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "mineTotalTokens",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_x",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_y",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_z",
+				"type": "uint256"
+			}
+		],
+		"name": "mulDiv",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "platformDataManager",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "totalInsuredAssets",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalLossesAssets",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "rbTokenAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_tokenAmount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_receive",
+				"type": "address"
+			}
+		],
+		"name": "rbTokenMigration",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "removeRainbowMineAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "setRBTokenAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "setRabinbowMineAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "userTotalAssets",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "loseAssets",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "receiveAddress",
+				"type": "address"
+			}
+		],
+		"name": "startMine",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	}
+]
